@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sayd-ai"
+version = "0.1.0"
+description = "Official Python SDK for the Sayd Speech API — Voice Interface for AI Agents"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    { name = "Sayd", email = "hello@sayd.dev" },
+]
+keywords = ["sayd", "speech-to-text", "stt", "voice", "ai", "agents", "transcription"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "httpx>=0.24.0",
+    "websockets>=11.0",
+]
+
+[project.optional-dependencies]
+audio = ["pyaudio>=0.2.13"]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+
+[project.urls]
+Homepage = "https://sayd.dev"
+Documentation = "https://sayd.dev/docs"
+Repository = "https://github.com/sayd-dev/sayd-python"
