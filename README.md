@@ -67,6 +67,10 @@ async def main():
 asyncio.run(main())
 ```
 
+## cURL Examples
+
+Want to test the API directly without the SDK? Check out our [cURL examples](examples/curl-examples.md) for all endpoints.
+
 ## Configuration
 
 ```python
