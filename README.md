@@ -76,7 +76,7 @@ Want to test the API directly without the SDK? Check out our [cURL examples](exa
 ```python
 client = Sayd(
     api_key="sk-your-key",
-    base_url="https://sayd.dev",  # default
+    base_url="https://api.sayd.dev",  # default
     timeout=30,                    # request timeout in seconds
 )
 ```

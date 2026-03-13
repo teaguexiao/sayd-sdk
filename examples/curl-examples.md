@@ -2,7 +2,7 @@
 
 > Test the Sayd API directly from your terminal.
 
-Replace `sk-your-key` with your actual API key. Default base URL: `https://sayd.dev`
+Replace `sk-your-key` with your actual API key. Default base URL: `https://api.sayd.dev`
 
 ## Authentication
 
@@ -10,7 +10,7 @@ All requests require your API key in the `Authorization` header:
 
 ```bash
 export SAYD_API_KEY="sk-your-key"
-export SAYD_BASE_URL="https://sayd.dev"
+export SAYD_BASE_URL="https://api.sayd.dev"
 ```
 
 ---
@@ -270,7 +270,7 @@ A complete flow: create session → stream audio → get cleaned result.
 set -e
 
 SAYD_API_KEY="sk-your-key"
-SAYD_BASE_URL="https://sayd.dev"
+SAYD_BASE_URL="https://api.sayd.dev"
 AUDIO_FILE="recording.wav"
 
 echo "=== 1. Create Talk Session ==="

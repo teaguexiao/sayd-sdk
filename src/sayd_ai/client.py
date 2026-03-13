@@ -6,7 +6,7 @@ import httpx
 
 from .talk import TalkResource, AsyncTalkResource
 
-DEFAULT_BASE_URL = "https://sayd.dev"
+DEFAULT_BASE_URL = "https://api.sayd.dev"
 DEFAULT_TIMEOUT = 30
 
 
