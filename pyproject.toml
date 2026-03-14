@@ -35,6 +35,10 @@ dependencies = [
 audio = ["pyaudio>=0.2.13"]
 dev = ["pytest", "pytest-asyncio", "ruff"]
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "strict"
+
 [project.urls]
 Homepage = "https://sayd.dev"
 Documentation = "https://sayd.dev/docs"
