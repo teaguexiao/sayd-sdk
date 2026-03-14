@@ -47,6 +47,55 @@ class TalkEvent:
 
 
 @dataclass
+class ListenSession:
+    """Metadata for a Listen (real-time STT) session.
+
+    Attributes:
+        session_id: Unique session identifier
+        websocket_url: WebSocket URL for streaming audio (connect directly)
+        language: Language code used for transcription
+        stt_service: STT service provider
+    """
+
+    session_id: str
+    websocket_url: str
+    language: str = "multi"
+    stt_service: str | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> ListenSession:
+        return cls(
+            session_id=data["session_id"],
+            websocket_url=data["websocket_url"],
+            language=data.get("language", "multi"),
+            stt_service=data.get("stt_service"),
+        )
+
+
+@dataclass
+class TranscriptionTask:
+    """Metadata for an offline transcription task.
+
+    Attributes:
+        task_id: Unique task identifier
+        status: Task status - "pending", "processing", "completed", "failed"
+        upload_url: Pre-authorized upload URL (only on creation)
+    """
+
+    task_id: str
+    status: str = "pending"
+    upload_url: str | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> TranscriptionTask:
+        return cls(
+            task_id=data.get("task_id", data.get("id", "")),
+            status=data.get("status", "pending"),
+            upload_url=data.get("upload_url"),
+        )
+
+
+@dataclass
 class TalkSession:
     """Metadata for a Talk session.
 

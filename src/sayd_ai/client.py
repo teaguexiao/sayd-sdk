@@ -5,6 +5,9 @@ from __future__ import annotations
 import httpx
 
 from .talk import TalkResource, AsyncTalkResource
+from .listen import ListenResource, AsyncListenResource
+from .transcribe import TranscribeResource, AsyncTranscribeResource
+from .vad import VADResource, AsyncVADResource
 
 DEFAULT_BASE_URL = "https://api.sayd.dev"
 DEFAULT_TIMEOUT = 30
@@ -36,6 +39,9 @@ class Sayd:
 
         # API resources
         self.talk = TalkResource(self)
+        self.listen = ListenResource(self)
+        self.transcribe = TranscribeResource(self)
+        self.vad = VADResource(self)
 
     def close(self) -> None:
         """Close the HTTP client."""
@@ -74,6 +80,9 @@ class AsyncSayd:
 
         # API resources
         self.talk = AsyncTalkResource(self)
+        self.listen = AsyncListenResource(self)
+        self.transcribe = AsyncTranscribeResource(self)
+        self.vad = AsyncVADResource(self)
 
     async def close(self) -> None:
         """Close the async HTTP client."""
