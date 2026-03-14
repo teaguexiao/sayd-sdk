@@ -160,8 +160,8 @@ class TestVADResource:
     def test_detect_with_bytes(self):
         def handler(request):
             assert request.method == "POST"
-            assert request.headers["Content-Type"] == "application/octet-stream"
             assert request.headers["Authorization"] == "sk-test"
+            # Now sends multipart, not raw bytes
             return json_response([
                 {"start": 0.5, "end": 2.3},
                 {"start": 3.1, "end": 5.0},

@@ -37,13 +37,11 @@ class VADResource:
             List of speech segments with start/end timestamps.
         """
         data = _load_audio(audio)
+        filename = Path(audio).name if isinstance(audio, (str, Path)) else "audio.wav"
         response = self._client._http.post(
             f"{self._client.base_url}/api/vad",
-            content=data,
-            headers={
-                "Authorization": self._client.api_key,
-                "Content-Type": "application/octet-stream",
-            },
+            files={"file": (filename, data, "audio/wav")},
+            headers={"Authorization": self._client.api_key},
         )
 
         if response.status_code == 401:
@@ -64,13 +62,11 @@ class VADResource:
             True if speech is detected, False otherwise.
         """
         data = _load_audio(audio)
+        filename = Path(audio).name if isinstance(audio, (str, Path)) else "audio.wav"
         response = self._client._http.post(
             f"{self._client.base_url}/api/vad/check",
-            content=data,
-            headers={
-                "Authorization": self._client.api_key,
-                "Content-Type": "application/octet-stream",
-            },
+            files={"file": (filename, data, "audio/wav")},
+            headers={"Authorization": self._client.api_key},
         )
 
         if response.status_code == 401:
@@ -92,13 +88,11 @@ class AsyncVADResource:
     async def detect(self, audio: Union[str, Path, bytes]) -> list[dict[str, Any]]:
         """Detect speech segments (async)."""
         data = _load_audio(audio)
+        filename = Path(audio).name if isinstance(audio, (str, Path)) else "audio.wav"
         response = await self._client._http.post(
             f"{self._client.base_url}/api/vad",
-            content=data,
-            headers={
-                "Authorization": self._client.api_key,
-                "Content-Type": "application/octet-stream",
-            },
+            files={"file": (filename, data, "audio/wav")},
+            headers={"Authorization": self._client.api_key},
         )
 
         if response.status_code == 401:
@@ -112,13 +106,11 @@ class AsyncVADResource:
     async def check(self, audio: Union[str, Path, bytes]) -> bool:
         """Check if audio contains speech (async)."""
         data = _load_audio(audio)
+        filename = Path(audio).name if isinstance(audio, (str, Path)) else "audio.wav"
         response = await self._client._http.post(
             f"{self._client.base_url}/api/vad/check",
-            content=data,
-            headers={
-                "Authorization": self._client.api_key,
-                "Content-Type": "application/octet-stream",
-            },
+            files={"file": (filename, data, "audio/wav")},
+            headers={"Authorization": self._client.api_key},
         )
 
         if response.status_code == 401:

@@ -78,13 +78,12 @@ class TestTranscribeIntegration:
 class TestVADIntegration:
     """VAD API — detect and check with real audio bytes."""
 
-    @pytest.mark.skip(reason="Memorion VAD requires multipart file upload — SDK needs update")
     def test_detect_with_silence(self, client):
+        # 100ms of silence (16kHz, 16-bit mono = 3200 bytes)
         silence = b"\x00" * 3200
         result = client.vad.detect(silence)
         assert isinstance(result, (list, dict))
 
-    @pytest.mark.skip(reason="Memorion VAD requires multipart file upload — SDK needs update")
     def test_check_with_silence(self, client):
         silence = b"\x00" * 3200
         result = client.vad.check(silence)
